@@ -1,0 +1,146 @@
+body {
+    background:#090225;
+    margin:0px;
+}
+
+/*moon with reflections*/
+.moon {
+ position: absolute;
+ top:4vh;
+ right:4vh;
+ width:8vh;
+ min-height: 100px;
+ min-width: 100px;
+ height: 8vh;
+ border-radius:50%;
+ background:#fff;
+ /*box-shadow: inset -20px 10px 5px 13px #f3d076*/
+ box-shadow:inset 
+             0 0 0 0 #fff,  
+             0 0 100px 60px #1e0974, 
+             0 0 200px 90px #140551;
+}
+
+/*road and pawement*/
+.road {
+    position:relative;
+    bottom:-10%;
+    height:250px;
+    width:100%;
+    background:#2b2b2c;
+}
+
+.pawement {
+    position: absolute;
+    bottom: 0%;
+    height:300px;
+    width:100%;
+    background:#676d71;
+}
+
+.road_decorations {
+  position:absolute;
+  top: 43%;
+  border: none;
+  border-top: 20px dashed rgb(255, 255, 255);
+  height: 120px;
+  width: 100%;
+}
+
+/* lamps with lights*/
+.lamp1 {
+    position: absolute;
+    top:-25vh;
+    left:10vh;
+    width:2vh;
+    height: 200px;
+    background: #666565;
+}
+
+.lamp2 {
+    position: absolute;
+    top:-25vh;
+    right:10vh;
+    width:2vh;
+    height: 200px;
+    background: #666565;
+}
+
+.lamp1_element {
+    position: relative;
+    left: -50%;
+    width: 30px;
+    height: 20px;
+    background: #666565;
+}
+
+.lamp2_element {
+    position: relative;
+    left: -50%;
+    width: 30px;
+    height: 20px;
+    background: #666565;
+}
+
+.lamp1_light{
+    position: relative;
+    right:3.2vh;
+    width: 15px; 
+    height: 15px; 
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 185px solid rgb(227, 231, 10);
+    opacity: 15%;
+}
+  
+.lamp2_light{
+    position: relative;
+    left:-3.2vh;
+    width: 15px; 
+    height: 15px; 
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 185px solid rgb(227, 231, 10);
+    opacity: 15%;
+}
+
+/* clouds */
+.cloud1, .cloud2, .cloud3, .cloud4, .cloud5{
+    position: absolute;
+    border-radius:50px;
+    background:linear-gradient(360deg, #ffff 50%, rgb(176, 176, 176) 50%);
+    width: 80px;
+    height: 30px;
+}
+
+.cloud1{
+    top:5vh;
+    left:5vh;
+}
+
+.cloud2{
+    top:10vh;
+    left:12vh;
+}
+
+.cloud3{
+    top:8vh;
+    left:30vh;
+}
+
+.cloud4{
+    top:6vh;
+    right:10vh;
+}
+
+.cloud5{
+    top:10vh;
+    right:15vh;
+}
+
+
+
+
+
+
+
