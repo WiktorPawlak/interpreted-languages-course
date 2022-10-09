@@ -1,146 +1,226 @@
 body {
-    background:#090225;
-    margin:0px;
+    position: -ms-page;
+    background: #090225;
+    margin: 0;
 }
 
 /*moon with reflections*/
 .moon {
- position: absolute;
- top:4vh;
- right:4vh;
- width:8vh;
- min-height: 100px;
- min-width: 100px;
- height: 8vh;
- border-radius:50%;
- background:#fff;
- /*box-shadow: inset -20px 10px 5px 13px #f3d076*/
- box-shadow:inset 
-             0 0 0 0 #fff,  
-             0 0 100px 60px #1e0974, 
-             0 0 200px 90px #140551;
+    position: fixed;
+    top: 4vh;
+    right: 4vh;
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+    background: #fff;
+    /*box-shadow: inset -20px 10px 5px 13px #f3d076*/
+    box-shadow: inset 0 0 0 0 #fff,
+        0 0 100px 60px #1e0974,
+        0 0 200px 90px #140551;
 }
 
-/*road and pawement*/
+.pavement {
+    position: fixed;
+    bottom: 0vh;
+    height: 40vh;
+    width: 100%;
+    background: #676d71;
+}
+
 .road {
-    position:relative;
-    bottom:-10%;
-    height:250px;
-    width:100%;
-    background:#2b2b2c;
-}
-
-.pawement {
-    position: absolute;
-    bottom: 0%;
-    height:300px;
-    width:100%;
-    background:#676d71;
+    position: fixed;
+    bottom: -4vh;
+    height: 40vh;
+    width: 100%;
+    background: #2b2b2c;
 }
 
 .road_decorations {
-  position:absolute;
-  top: 43%;
-  border: none;
-  border-top: 20px dashed rgb(255, 255, 255);
-  height: 120px;
-  width: 100%;
+    position: fixed;
+    top: 85vh;
+    width: 400vh;
+    height: 20vh;
+    border: none;
+    border-top: 3vh dashed rgb(255, 255, 255);
 }
 
 /* lamps with lights*/
 .lamp1 {
-    position: absolute;
-    top:-25vh;
-    left:10vh;
-    width:2vh;
-    height: 200px;
+    position: fixed;
+    top: 30vh;
+    left: 10.3vh;
+    width: 2vh;
+    height: 30vh;
     background: #666565;
 }
 
 .lamp2 {
-    position: absolute;
-    top:-25vh;
-    right:10vh;
-    width:2vh;
-    height: 200px;
+    position: fixed;
+    top: 30vh;
+    right: 9.7vh;
+    width: 2vh;
+    height: 30vh;
     background: #666565;
 }
 
 .lamp1_element {
-    position: relative;
-    left: -50%;
-    width: 30px;
-    height: 20px;
+    position: fixed;
+    left: 9.3vh;
+    width: 4vh;
+    height: 2vh;
     background: #666565;
 }
 
 .lamp2_element {
-    position: relative;
-    left: -50%;
-    width: 30px;
-    height: 20px;
+    position: fixed;
+    right: 8.7vh;
+    width: 4vh;
+    height: 2vh;
     background: #666565;
 }
 
-.lamp1_light{
-    position: relative;
-    right:3.2vh;
-    width: 15px; 
-    height: 15px; 
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 185px solid rgb(227, 231, 10);
-    opacity: 15%;
-}
-  
-.lamp2_light{
-    position: relative;
-    left:-3.2vh;
-    width: 15px; 
-    height: 15px; 
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 185px solid rgb(227, 231, 10);
+.lamp1_light {
+    position: fixed;
+    right: 1.7vh;
+    width: 2vh;
+    height: 2vh;
+    border-left: 8vh solid transparent;
+    border-right: 8vh solid transparent;
+    border-bottom: 29vh solid rgb(227, 231, 10);
     opacity: 15%;
 }
 
-/* clouds */
-.cloud1, .cloud2, .cloud3, .cloud4, .cloud5{
-    position: absolute;
-    border-radius:50px;
-    background:linear-gradient(360deg, #ffff 50%, rgb(176, 176, 176) 50%);
-    width: 80px;
-    height: 30px;
+.lamp2_light {
+    position: fixed;
+    left: 2.3vh;
+    width: 2vh;
+    height: 2vh;
+    border-left: 8vh solid transparent;
+    border-right: 8vh solid transparent;
+    border-bottom: 29vh solid rgb(227, 231, 10);
+    opacity: 15%;
 }
 
-.cloud1{
-    top:5vh;
-    left:5vh;
+.cloud1,
+.cloud2,
+.cloud3,
+.cloud4,
+.cloud5 {
+    position: fixed;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, #ffff 50%, rgb(176, 176, 176) 50%);
+    width: 15vh;
+    height: 3.5vh;
 }
 
-.cloud2{
-    top:10vh;
-    left:12vh;
+.cloud1 {
+    top: 5vh;
+    left: 5vh;
 }
 
-.cloud3{
-    top:8vh;
-    left:30vh;
+.cloud2 {
+    top: 10vh;
+    left: 12vh;
 }
 
-.cloud4{
-    top:6vh;
-    right:10vh;
+.cloud3 {
+    top: 8vh;
+    left: 30vh;
 }
 
-.cloud5{
-    top:10vh;
-    right:15vh;
+.cloud4 {
+    top: 6vh;
+    right: 10vh;
+}
+
+.cloud5 {
+    top: 10vh;
+    right: 15vh;
+}
+
+.car {
+    position: fixed;
+    bottom: 28vh;
+    left: 50vh;
+    width: 27.2vh;
+    height: 7vh;
+    background: #460779;
+    padding: 1vh;
+    border: 0.1vh solid black;
+    border-radius: 3vh 9vh 0 0;
+}
+
+.windows {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    /* WebKit-based browsers will ignore this. */
+    width: -moz-available;
+    /* Mozilla-based browsers will ignore this. */
+    width: -webkit-fill-available;
+    gap: 8.6vh;
+}
+
+.back-window,
+.front-window {
+    width: 8vh;
+    height: 3vh;
+    background: #545554;
+    border: 0.1vh solid black;
+}
+
+.front-window {
+    border-radius: 0 3vh 0 0;
+}
+
+.back-window {
+    border-radius: 2vh 0 0 0;
+    border-bottom-right-radius: 0;
+}
+
+.chassis {
+    position: fixed;
+    bottom: 25vh;
+    left: 48vh;
+    width: 39vh;
+    height: 7vh;
+    background-color: #460779;
+    border-radius: 3vh 4vh 2vh 2.5vh;
+    border: 0.1vh solid black;
 }
 
 
+.tires {
+    position: fixed;
+    bottom: 27vh;
+}
 
+.front-tire {
+    position: fixed;
+    left: 82vh;
+    width: 1vh;
+    height: 1vh;
+    background-color: #0b0b2b;
+    border-top: 0.8vh solid #ffffff;
+    border-right: 0.8vh solid #a8a8a8;
+    border-bottom: 0.8vh solid #ffffff;
+    border-left: 0.8vh solid #a8a8a8;
+    box-shadow: 0 0 0 1.5vh #1f2050;
+    border-radius: 20vh;
+}
 
-
-
-
+.back-tire {
+    position: fixed;
+    left: 52vh;
+    width: 1vh;
+    height: 1vh;
+    background-color: #0b0b2b;
+    border-top: 0.8vh solid #ffffff;
+    border-right: 0.8vh solid #a8a8a8;
+    border-bottom: 0.8vh solid #ffffff;
+    border-left: 0.8vh solid #a8a8a8;
+    box-shadow: 0 0 0 1.5vh #1f2050;
+    border-radius: 20vh;
+}
