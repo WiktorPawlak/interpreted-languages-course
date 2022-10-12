@@ -6,21 +6,21 @@ body {
 
 /*moon with reflections*/
 .moon {
-    position: fixed;
+    position: absolute;
     top: 4vh;
     right: 4vh;
-    height: 8vh;
-    width: 8vh;
+    height: 12vh;
+    width: 12vh;
     border-radius: 50%;
     background: #fff;
     /*box-shadow: inset -20px 10px 5px 13px #f3d076*/
     box-shadow: inset 0 0 0 0 #fff,
-        0 0 100px 60px #1e0974,
-        0 0 200px 90px #140551;
+        0 0 100px 160px #1e0974,
+        0 0 200px 190px #140551;
 }
 
 .pavement {
-    position: fixed;
+    position: absolute;
     bottom: 0vh;
     height: 40vh;
     width: 100%;
@@ -28,7 +28,7 @@ body {
 }
 
 .road {
-    position: fixed;
+    position:fixed;
     bottom: -4vh;
     height: 40vh;
     width: 100%;
@@ -38,7 +38,7 @@ body {
 .road_decorations {
     position: fixed;
     top: 85vh;
-    width: 400vh;
+    width: 100%;
     height: 20vh;
     border: none;
     border-top: 3vh dashed rgb(255, 255, 255);
@@ -63,6 +63,7 @@ body {
     background: #666565;
 }
 
+
 .lamp1_element {
     position: fixed;
     left: 9.3vh;
@@ -81,7 +82,7 @@ body {
 
 .lamp1_light {
     position: fixed;
-    right: 1.7vh;
+    left: 2.3vh;
     width: 2vh;
     height: 2vh;
     border-left: 8vh solid transparent;
@@ -92,7 +93,7 @@ body {
 
 .lamp2_light {
     position: fixed;
-    left: 2.3vh;
+    right: 1.7vh;
     width: 2vh;
     height: 2vh;
     border-left: 8vh solid transparent;
@@ -111,6 +112,7 @@ body {
     background: linear-gradient(360deg, #ffff 50%, rgb(176, 176, 176) 50%);
     width: 15vh;
     height: 3.5vh;
+    animation: clouds 4s linear infinite;
 }
 
 .cloud1 {
@@ -136,6 +138,12 @@ body {
 .cloud5 {
     top: 10vh;
     right: 15vh;
+}
+
+@keyframes clouds {
+    50% {
+     transform: translateX(20px);
+    }
 }
 
 .car {
@@ -167,7 +175,7 @@ body {
 .front-window {
     width: 8vh;
     height: 3vh;
-    background: #545554;
+    background: #498f8f;
     border: 0.1vh solid black;
 }
 
@@ -224,3 +232,192 @@ body {
     box-shadow: 0 0 0 1.5vh #1f2050;
     border-radius: 20vh;
 }
+
+.front-light{
+    background-color: rgb(255, 238, 0);
+    position: fixed;
+    bottom: 30vh;
+    left: 85vh;
+    width: 2vh;
+    height: 1vh;
+}
+
+.back-light{
+    background-color: rgb(255, 0, 0);
+    position: fixed;
+    bottom: 30vh;
+    left: 49vh;
+    width: 2vh;
+    height: 1vh;
+}
+
+.car-front-light{
+    position: fixed;
+    right: 97vh;
+    width: 1vh;
+    height: 1.8vh;
+    bottom: 15vh;
+    transform: rotate(270deg);
+    border-left: 8vh solid transparent;
+    border-right: 8vh solid transparent;
+    border-bottom: 29vh solid rgb(162, 165, 8);
+    opacity: 15%;
+}
+
+.car-back-light{
+    position: fixed;
+    right: 154vh;
+    width: 1vh;
+    height: 0.5vh;
+    bottom: 27vh;
+    transform: rotate(90deg);
+    border-left: 3vh solid transparent;
+    border-right: 3vh solid transparent;
+    border-bottom: 6vh solid rgb(231, 10, 10);
+    opacity: 15%;
+}
+
+.light1{
+    position: fixed;
+    top: 55vh;
+    left: 90.3vh;
+    width: 2vh;
+    height: 0vh;
+    border-left: 8vh solid transparent;
+    border-right: 8vh solid transparent;
+    border-bottom: 29vh solid rgb(227, 231, 10);
+    transform: rotate(270deg);
+    opacity: 15%;
+}
+
+.light2{
+    position: fixed;
+    top: 67vh;
+    left: 46.5vh;
+    width: 2vh;
+    height: 0vh;
+    border-left: 1vh solid transparent;
+    border-right: 1vh solid transparent;
+    border-bottom: 5vh solid rgb(231, 10, 10);
+    transform: rotate(90deg);
+    opacity: 15%;
+}
+
+.tree1{
+    background-color: rgb(68, 31, 1);
+    position: absolute;
+    top: -39vh;
+    right: 40vh;
+    width: 4vh;
+    height: 35vh;
+}
+
+.leaves1{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 30vh;
+    height: 5vh;
+    top: 0vh;
+    left: -13vh;
+}
+
+.leaves2{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 20vh;
+    height: 5vh;
+    top: -15vh;
+    left: -9vh;
+}
+
+.leaves3{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 25vh;
+    height: 5vh;
+    top: -15vh;
+    left: -10vh;
+}
+
+.leaves4{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 10vh;
+    height: 3vh;
+    top: -5vh;
+    left: -7vh;
+}
+
+.leaves5{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 10vh;
+    height: 3vh;
+    top: -11vh;
+    left: 2vh;
+}
+
+.tree2{
+    background-color: rgb(68, 31, 1);
+    position: absolute;
+    top: -39vh;
+    left: 40vh;
+    width: 4vh;
+    height: 35vh;
+}
+
+.leaves6{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 30vh;
+    height: 5vh;
+    top: 0vh;
+    left: -12vh;
+}
+
+.leaves7{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 20vh;
+    height: 5vh;
+    top: -15vh;
+    left: -8vh;
+}
+
+.leaves8{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 25vh;
+    height: 5vh;
+    top: -15vh;
+    left: -10vh;
+}
+
+.leaves9{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 10vh;
+    height: 3vh;
+    top: -5vh;
+    left: -5vh;
+}
+
+.leaves10{
+    position: relative;
+    border-radius: 3vh;
+    background: linear-gradient(360deg, rgb(34, 241, 7) 50%, rgb(2, 112, 7) 50%);
+    width: 10vh;
+    height: 3vh;
+    top: -11vh;
+    left: 3vh;
+}
+
