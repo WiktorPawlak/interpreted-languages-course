@@ -1,12 +1,12 @@
 "use strict"
-let todoList = []; //declares a new array for Your todo list
+let todoList = []; 
 
+//initialize to do list from choosen JSON bin
 let initList = function() {
     $.ajax({
-        // copy Your bin identifier here. It can be obtained in the dashboard
         url: 'https://api.jsonbin.io/v3/b/63480b432b3499323bdd3b06',
         type: 'GET',
-        headers: { //Required only if you are trying to access a private bin
+        headers: { 
           'X-Master-Key': '$2b$10$0t5LHPGAMAjkhpD1iqTWauGoxYtp.Rlbe/UzLJqi5R6CvKlfY3e5e'
         },
         success: (data) => {
@@ -26,7 +26,7 @@ let updateJSONbin = function() {
     $.ajax({
     url: 'https://api.jsonbin.io/v3/b/63480b432b3499323bdd3b06',
     type: 'PUT',
-    headers: { //Required only if you are trying to access a private bin
+    headers: { 
         'X-Master-Key': '$2b$10$0t5LHPGAMAjkhpD1iqTWauGoxYtp.Rlbe/UzLJqi5R6CvKlfY3e5e'
     },
     contentType: 'application/json',
@@ -66,30 +66,34 @@ let updateTodoList = function() {
         newElement.appendChild(newContent);
         todoListDiv.appendChild(newElement);
 
+        //deelete button 
         let newDeleteButton = document.createElement("input");
         newDeleteButton.type = "button";
         newDeleteButton.value = "X";
         newDeleteButton.addEventListener("click",
             function() {
-                deleteTodo(todo);
+            deleteTodo(todo);
             });
             newElement.appendChild(newDeleteButton);
     }
 }
 
+//sarch tasks based on the search input 
 let Search = function() {
-    //setInterval(updateTodoList, 1000);
     updateTodoList();
 }
 
+//clear tasks shown after using Search() function
 let Clear = function () {
     let filterInput = document.getElementById("inputSearch");   
     filterInput.value = "";
     updateTodoList();
 }
 
+//delete task
 let deleteTodo = function(index) {
     todoList.splice(index,1);
+    //update tasks on viewport and JSON bin
     updateJSONbin();
     updateTodoList();
 }
@@ -115,6 +119,7 @@ let addTodo = function() {
     //add item to the list
       todoList.push(newTodo);
       window.localStorage.setItem("todos", JSON.stringify(todoList));
+      //update tasks on viewport and JSON bin
       updateJSONbin();
       updateTodoList();
   }
