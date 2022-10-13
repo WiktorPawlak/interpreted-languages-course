@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+    <title>TO DO</title>
+ </head>
+ <body>
+    <h1>Aplikacje w językach interpretowalnych zadanie 2</h1>
+    <div id="todoListView"></div>
+    <div>
+        <label>Search</label>
+        <input type="text" id="inputSearch" placeholder="Type Your seach here..."/>
+        <input type="button" value="Search" onclick="Search()"/>
+        <input type="button" value="Clear" onclick="Clear()"/>
+    </div>
+    <form>
+        <label>Title</label>
+        <input type="text" id="inputTitle" placeholder="Title..."/>
+        <label>Description</label>
+        <input type="text" id="inputDescription" placeholder="Description..."/>
+        <label>Place</label>
+        <input type="text" id="inputPlace" placeholder="Place..."/>
+        <label>Due date</label>
+        <input type="date" id="inputDate"/>
+        <input type="button" value="add" onclick="addTodo()"/>
+    </form>
+ </body>
+</html>
