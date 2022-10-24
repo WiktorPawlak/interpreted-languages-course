@@ -46,11 +46,17 @@ let updateTodoList = function () {
     let table = $("#todoTable").find("tbody");
     let filterInput = $("#inputSearch").val();
 
+    const inputStartDate = $("#inputStartDate");
+    const inputEndDate = $("#inputEndDate");
+    let startDate = new Date(inputStartDate.val()).getTime();
+    let endDate = new Date(inputEndDate.val()).getTime();
+
     //remove all elements
     table.empty();
  
     for (let todo in todoList) {
-        if (SearchFilter(filterInput, todoList[todo])) {
+        if (SearchFilter(filterInput, todoList[todo]) &&
+            SearchDate(todoList[todo], startDate, endDate)) {
             searchItemList.push(todoList[todo]);
         }
     }
@@ -72,13 +78,27 @@ let updateTodoList = function () {
 let SearchFilter = function(filterInput, todoObject) {
     let filterInputValue = document.getElementById("inputSearch");
     if ((filterInputValue.value == "") ||
-    todoObject.title.includes(filterInput) ||
-    todoObject.description.includes(filterInput) ||
-    todoObject.place.includes(filterInput)) {
+        todoObject.title.includes(filterInput) ||
+        todoObject.description.includes(filterInput) ||
+        todoObject.place.includes(filterInput)) {
         return true;
     }
     return false;
 };
+
+let SearchDate = function(todoObject, startDate, endDate) {
+    let filterStartDateValue = document.getElementById("inputStartDate");
+    let filterEndDateValue = document.getElementById("inputEndDate");
+    
+    if (((filterStartDateValue.value == "") ||
+            (startDate <= new Date(todoObject.dueDate).getTime())) &&
+        ((filterEndDateValue.value == "") ||
+            (endDate >= new Date(todoObject.dueDate).getTime()))) {
+        return true;
+    }
+    return false;
+};
+
 
 
 //sarch tasks based on the search input 
@@ -89,7 +109,11 @@ let Search = function() {
 //clear tasks shown after using Search() function
 let Clear = function () {
     let filterInput = document.getElementById("inputSearch");   
+    let filterStartDateValue = document.getElementById("inputStartDate");
+    let filterEndDateValue = document.getElementById("inputEndDate");
     filterInput.value = "";
+    filterEndDateValue.value = "";
+    filterStartDateValue.value = "";
     updateTodoList();
 }
 
@@ -112,7 +136,7 @@ let addTodo = function() {
       let newDescription = inputDescription.value;
       let newPlace = inputPlace.value;
       let newDate = new Date(inputDate.value);
-      newDate = newDate.getUTCDate() + "." + (newDate.getMonth()+1) + "." + (newDate.getFullYear());
+      //newDate = newDate.getUTCDate() + "." + (newDate.getMonth()+1) + "." + (newDate.getFullYear());
     //create new item
       let newTodo = {
           title: newTitle,
