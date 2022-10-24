@@ -105,9 +105,9 @@ let Clear = function () {
     let filterInput = $("#inputSearch");
     let filterStartDateValue = $("#inputStartDate");
     let filterEndDateValue = $("#inputEndDate");
-    filterInput.val() = "";
-    filterEndDateValue.val() = "";
-    filterStartDateValue.val() = "";
+    filterInput.val("");
+    filterEndDateValue.val("");
+    filterStartDateValue.val("");
     updateTodoList();
 }
 
