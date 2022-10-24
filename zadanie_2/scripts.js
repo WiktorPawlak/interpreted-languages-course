@@ -76,24 +76,21 @@ let updateTodoList = function () {
 }
 
 let SearchFilter = function (filterInput, todoObject) {
-    let filterInputValue = $("input.inputSearch").val();
+    let filterInputValue = $("#inputSearch").val();
     return !!((filterInputValue == "") ||
         todoObject.title.includes(filterInput) ||
         todoObject.description.includes(filterInput) ||
         todoObject.place.includes(filterInput));
 };
 
-let SearchDate = function(todoObject, startDate, endDate) {
-    let filterStartDateValue = document.getElementById("inputStartDate");
-    let filterEndDateValue = document.getElementById("inputEndDate");
-    
-    if (((filterStartDateValue.value == "") ||
-            (startDate <= new Date(todoObject.dueDate).getTime())) &&
-        ((filterEndDateValue.value == "") ||
-            (endDate >= new Date(todoObject.dueDate).getTime()))) {
-        return true;
-    }
-    return false;
+let SearchDate = function (todoObject, startDate, endDate) {
+    let filterStartDateValue = $("#inputStartDate").val();
+    let filterEndDateValue = $("#inputEndDate").val();
+
+    return !!(((filterStartDateValue == "") ||
+        (startDate <= new Date(todoObject.dueDate).getTime())) &&
+        ((filterEndDateValue == "") ||
+            (endDate >= new Date(todoObject.dueDate).getTime())));
 };
 
 
@@ -105,12 +102,12 @@ let Search = function () {
 
 //clear tasks shown after using Search() function
 let Clear = function () {
-    let filterInput = $("document.inputSearch");
-    let filterStartDateValue = $("document.inputStartDate");
-    let filterEndDateValue = $("document.inputEndDate");
-    filterInput.value = "";
-    filterEndDateValue.value = "";
-    filterStartDateValue.value = "";
+    let filterInput = $("#inputSearch");
+    let filterStartDateValue = $("#inputStartDate");
+    let filterEndDateValue = $("#inputEndDate");
+    filterInput.val() = "";
+    filterEndDateValue.val() = "";
+    filterStartDateValue.val() = "";
     updateTodoList();
 }
 
@@ -124,16 +121,16 @@ let deleteTodo = function (index) {
 
 let addTodo = function () {
     //get the elements in the form
-    let inputTitle = $("document.inputTitle");
-    let inputDescription = $("document.inputDescription");
-    let inputPlace = $("document.inputPlace");
-    let inputDate = $("document.inputDate");
+    let inputTitle = $("#inputTitle");
+    let inputDescription = $("#inputDescription");
+    let inputPlace = $("#inputPlace");
+    let inputDate = $("#inputDate");
     //get the values from the form
-      let newTitle = inputTitle.value;
-      let newDescription = inputDescription.value;
-      let newPlace = inputPlace.value;
-      let newDate = new Date(inputDate.value);
-      //newDate = newDate.getUTCDate() + "." + (newDate.getMonth()+1) + "." + (newDate.getFullYear());
+    let newTitle = inputTitle.val();
+    let newDescription = inputDescription.val();
+    let newPlace = inputPlace.val();
+    let newDate = new Date(inputDate.val());
+    //newDate = newDate.getUTCDate() + "." + (newDate.getMonth()+1) + "." + (newDate.getFullYear());
     //create new item
     let newTodo = {
         title: newTitle,
