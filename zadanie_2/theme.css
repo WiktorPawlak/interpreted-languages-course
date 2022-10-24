@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;500&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.headertext{
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1%;
+}
+
+.footer{
+    text-align: center;
+    font-weight: 500;
+}

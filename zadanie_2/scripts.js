@@ -13,7 +13,7 @@ let initList = function() {
          todoList = data.record;
          updateTodoList();
          console.log(data.record);
-        },
+        }, 
         error: (err) => {
           console.log(err.responseJSON);
         }
@@ -40,43 +40,46 @@ let updateJSONbin = function() {
     });
 }
 
-let updateTodoList = function() {
-    let todoListDiv =
-    document.getElementById("todoListView");
+
+let updateTodoList = function () {
+    let searchItemList = [];
+    let table = $("#todoTable").find("tbody");
+    let filterInput = $("#inputSearch").val();
 
     //remove all elements
-    while (todoListDiv.firstChild) {
-        todoListDiv.removeChild(todoListDiv.firstChild);
+    table.empty();
+ 
+    for (let todo in todoList) {
+        if (SearchFilter(filterInput, todoList[todo])) {
+            searchItemList.push(todoList[todo]);
+        }
     }
 
     //add all elements
-    let filterInput = document.getElementById("inputSearch");   
-    for (let todo in todoList) 
-    if (
-        (filterInput.value == "") ||
-        (todoList[todo].title.includes(filterInput.value)) ||
-        (todoList[todo].description.includes(filterInput.value))
-       )
-    {
-        let newElement = document.createElement("div");
-        let newContent = document.createTextNode
-            (
-            todoList[todo].title + " " + todoList[todo].description
-            );
-        newElement.appendChild(newContent);
-        todoListDiv.appendChild(newElement);
-
-        //deelete button 
-        let newDeleteButton = document.createElement("input");
-        newDeleteButton.type = "button";
-        newDeleteButton.value = "X";
-        newDeleteButton.addEventListener("click",
-            function() {
-            deleteTodo(todo);
-            });
-            newElement.appendChild(newDeleteButton);
+    for (let todo in searchItemList) {
+        table.append(
+            "<tr>" +
+            "<td>" + searchItemList[todo].title + "</td>" +
+            "<td>" + searchItemList[todo].description + "</td>" +
+            "<td>" + searchItemList[todo].place + "</td>" +
+            "<td>" + searchItemList[todo].dueDate + "</td>" +
+            "<td>" + "<input class='btn btn-outline-danger' type='button' value='X' onclick='deleteTodo(" + todo + ")'/>" + "</td>" +
+            "</tr>"
+        );
     }
 }
+
+let SearchFilter = function(filterInput, todoObject) {
+    let filterInputValue = document.getElementById("inputSearch");
+    if ((filterInputValue.value == "") ||
+    todoObject.title.includes(filterInput) ||
+    todoObject.description.includes(filterInput) ||
+    todoObject.place.includes(filterInput)) {
+        return true;
+    }
+    return false;
+};
+
 
 //sarch tasks based on the search input 
 let Search = function() {
@@ -109,6 +112,7 @@ let addTodo = function() {
       let newDescription = inputDescription.value;
       let newPlace = inputPlace.value;
       let newDate = new Date(inputDate.value);
+      newDate = newDate.getUTCDate() + "." + (newDate.getMonth()+1) + "." + (newDate.getFullYear());
     //create new item
       let newTodo = {
           title: newTitle,
@@ -116,7 +120,7 @@ let addTodo = function() {
           place: newPlace,
           dueDate: newDate
       };
-    //add item to the list
+      //add item to the list
       todoList.push(newTodo);
       window.localStorage.setItem("todos", JSON.stringify(todoList));
       //update tasks on viewport and JSON bin
