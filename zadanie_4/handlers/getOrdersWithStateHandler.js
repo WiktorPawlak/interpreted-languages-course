@@ -9,7 +9,7 @@ exports.getOrdersWithStateHandler = async (req, res) => {
             .populate('products.product')
             .populate('products.product.category')
             .exec();
-        if (!orders) {
+        if (!orders || orders.length === 0) {
             res.status(404).json({ message: 'Orders not found' });
         } else {
             res.status(200).json({ message: 'Orders retrieved', data: orders });

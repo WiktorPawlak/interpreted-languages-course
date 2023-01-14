@@ -1,4 +1,5 @@
 const ProductModel = require("../models/product");
+const {validateId} = require("./validation/idValidator");
 
 
 exports.putProductHandler = async (req, res) => {
@@ -11,13 +12,10 @@ exports.putProductHandler = async (req, res) => {
     const pPrice = req.body['price'];
     const pWeight = req.body['weight'];
 
-    const idFormat = /^[0-9a-zA-Z]{24}$/;
-    if (!idFormat.test(id)) {
-        res.status(400).send({ errors: 'Product id has invalid format', status: 400 });
-        return;
-    }
-    if (!id) {
-        res.status(400).send({ errors: 'Product id is required', status: 400 });
+    try {
+        validateId(id, res)
+    } catch(err) {
+        res.status(400).send({ errors: err.message, status: 400 });
         return;
     }
 

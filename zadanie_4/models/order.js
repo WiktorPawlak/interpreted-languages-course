@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const State = require('./state');
-const { ObjectId } = require('mongoose').Types;
-
 
 const ordersSchema = Schema({
   _id: Schema.Types.ObjectId,

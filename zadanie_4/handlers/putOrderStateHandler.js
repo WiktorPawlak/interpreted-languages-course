@@ -1,5 +1,6 @@
 const OrderModel = require("../models/order");
 const StateModel = require("../models/state");
+const {validateId} = require("./validation/idValidator");
 
 
 exports.putOrderStateHandler = async (req, res) => {
@@ -8,27 +9,29 @@ exports.putOrderStateHandler = async (req, res) => {
     const id = req.params['_id'];
     const status = req.body['status'];
 
-    const idFormat = /^[0-9a-fA-F]{24}$/;
-    if (!idFormat.test(id)) {
-        res.status(400).send({ errors: 'Product id has invalid format', status: 400 });
-        return;
-    }
-    if (!id) {
-        res.status(400).send({ errors: 'Product id is required', status: 400 });
+    try {
+        validateId(id, res)
+    } catch(err) {
+        res.status(400).send({ errors: err.message, status: 400 });
         return;
     }
 
-    let order = await OrderModel
-        .findById({ _id: id })
-        .populate('status')
-        .exec()
-        .then((order) => {
-            if (order === undefined || !order) {
-                res.status(404).send({ errors: 'Order not found', status: 404 });
-                return;
-            }
-            return order;
-        })
+    let order;
+    try {
+        order = await OrderModel
+            .findById({_id: id})
+            .populate('status')
+            .exec()
+            .then((order) => {
+                if (order === undefined || !order) {
+                    throw new Error(`Order ${id} not found`)
+                }
+                return order;
+            });
+    } catch(err) {
+        res.status(404).send({errors: err.message, status: 404});
+        return;
+    }
 
     console.log(order)
 

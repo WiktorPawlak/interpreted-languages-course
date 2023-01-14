@@ -7,7 +7,7 @@ exports.getProductsHandler = async (req, res) => {
             .find()
             .populate('category')
             .exec();
-        if (!products) {
+        if (!products || products.length === 0) {
             res.status(404).json({ message: 'Products not found' });
         } else {
             res.status(200).json({ message: 'Products retrieved', data: products });
