@@ -12,7 +12,7 @@ exports.putOrderStateHandler = async (req, res) => {
     try {
         validateId(id, res)
     } catch(err) {
-        res.status(400).send({ errors: err.message, status: 400 });
+        res.status(400).send({ errors: err.message });
         return;
     }
 
@@ -29,28 +29,26 @@ exports.putOrderStateHandler = async (req, res) => {
                 return order;
             });
     } catch(err) {
-        res.status(404).send({errors: err.message, status: 404});
+        res.status(404).send({ errors: err.message });
         return;
     }
 
-    console.log(order)
-
     const stateName = order.status.stateName
     if (status == null || status === '') {
-        res.status(400).send({ errors: 'Status parameter must be nonempty string literal conforming to allowed status types', status: 400 });
+        res.status(400).send({ errors: 'Status parameter must be nonempty string literal conforming to allowed status types' });
         return;
     }
     if (stateName !== 'UNAPPROVED' && stateName !== 'APPROVED')
     {
-        res.status(400).send({ errors: `Orders with state \`${stateName}\` cannot be transitioned to another state`, status: 400 });
+        res.status(400).send({ errors: `Orders with state \`${stateName}\` cannot be transitioned to another state` });
         return;
     }
     if (stateName === 'UNAPPROVED' && status !== 'APPROVED') {
-        res.status(400).send({ errors: `\`UNAPPROVED\` orders must be \`APPROVED\` first`, status: 400 });
+        res.status(400).send({ errors: `\`UNAPPROVED\` orders must be \`APPROVED\` first` });
         return;
     }
     if (stateName === 'APPROVED' && status === 'UNAPPROVED') {
-        res.status(400).send({ errors: `\`APPROVED\` orders cannot be transitioned back to \`UNAPPROVED\` state`, status: 400 });
+        res.status(400).send({ errors: `\`APPROVED\` orders cannot be transitioned back to \`UNAPPROVED\` state` });
         return;
     }
 
@@ -65,12 +63,13 @@ exports.putOrderStateHandler = async (req, res) => {
         })
         .then((order) => {
             if (!order) {
-                res.status(404).send({ errors: 'Order not found', status: 404 });
+                res.status(404).send({ errors: 'Order not found' });
             } else {
-                res.status(200).send({ response: 'Order successfully updated', status: 200 });
+                console.log(order)
+                res.status(200).send({ response: 'Order successfully updated' });
             }
         })
         .catch((err) => {
-            res.status(400).send({ errors: 'Unable to update order' + err, status: 400 });
+            res.status(400).send({ errors: 'Unable to update order' + err });
         });
 }

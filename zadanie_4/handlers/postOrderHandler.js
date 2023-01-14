@@ -12,20 +12,20 @@ exports.postOrderHandler = async (req, res) => {
     const products = req.body['products'];
 
     if (userData.username == null || userData.username === "") {
-        res.status(400).send({ errors: 'Username cannot be empty', status: 400 });
+        res.status(400).send({ errors: 'Username cannot be empty' });
         return;
     }
     if (userData.email == null || userData.email === "") {
-        res.status(400).send({ errors: 'User email cannot be empty', status: 400 });
+        res.status(400).send({ errors: 'User email cannot be empty' });
         return;
     }
     if (userData.phoneNumber == null || userData.phoneNumber === "") {
-        res.status(400).send({ errors: 'User phone number cannot be empty', status: 400 });
+        res.status(400).send({ errors: 'User phone number cannot be empty' });
         return;
     }
     const phoneNumberFormat = /^[0-9]{9}$/;
     if (!phoneNumberFormat.test(userData.phoneNumber)) {
-        res.status(400).send({ errors: 'User phone number has wrong format', status: 400 });
+        res.status(400).send({ errors: 'User phone number has wrong format' });
         return;
     }
 
@@ -49,7 +49,7 @@ exports.postOrderHandler = async (req, res) => {
             throw new Error('One or more product IDs in the order are invalid');
         }
     } catch(err) {
-        res.status(400).send({ errors: err.message, status: 400 });
+        res.status(400).send({ errors: err.message });
         return;
     }
 
@@ -67,9 +67,9 @@ exports.postOrderHandler = async (req, res) => {
         .then((product) => {
             console.log(product);
 
-            res.status(200).send({ response: 'Order saved to the database', status: 201 });
+            res.status(200).send({ response: 'Order saved to the database' });
         })
         .catch((err) => {
-            res.status(400).send({ errors: 'Unable to save order' + err, status: 400 });
+            res.status(400).send({ errors: 'Unable to save order' + err });
         });
 }

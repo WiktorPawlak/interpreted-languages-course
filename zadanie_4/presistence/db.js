@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const options = {
     user: process.env.DB_USERNAME,
     pass: process.env.DB_PASSWORD,
-    authSource: process.env.DB_NAME,
+    authSource: process.env.DB_AUTHSOURCE,
     useNewUrlParser: true,
     useUnifiedTopology: true
 };
@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URL,
         if(err){
             console.log(`Cannot connect to database!` + err);
         } else {
-            console.log(`Connected to ${process.env.DB_SCHEMA}`);
+            console.log(`Connected to ${process.env.DB_NAME}`);
         }
     });
 

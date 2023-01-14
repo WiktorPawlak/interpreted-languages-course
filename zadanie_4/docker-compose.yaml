@@ -6,7 +6,7 @@ services:
     env_file: .env
     container_name: mongodb
     ports:
-      - "27017:27017"
+      - ${MONGODB_HOST_PORT}:${MONGODB_INTERNAL_PORT}
     environment:
       MONGO_INITDB_ROOT_USERNAME: $DB_USERNAME
       MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
@@ -19,6 +19,6 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: $DB_PASSWORD
       ME_CONFIG_MONGODB_SERVER: mongodb
     ports:
-      - "8081:8081"
+      - ${EXPRESS_HOST_PORT}:${EXPRESS_INTERNAL_PORT}
     depends_on:
       - mongodb

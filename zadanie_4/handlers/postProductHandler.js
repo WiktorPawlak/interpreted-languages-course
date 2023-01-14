@@ -14,28 +14,28 @@ exports.postProductHandler = async (req, res) => {
     const pWeight = req.body['weight'];
 
     if (pName == null || pName === "") {
-        res.status(400).send({ errors: 'Product name can not be empty', status: 400 });
+        res.status(400).send({ errors: 'Product name can not be empty' });
         return;
     }
 
     if (pDescription == null || pDescription === "") {
-        res.status(400).send({ errors: 'Product description can not be empty', status: 400 });
+        res.status(400).send({ errors: 'Product description can not be empty' });
         return;
     }
 
     if (pCategory == null || pCategory === "") {
-        res.status(400).send({ errors: 'Product category can not be empty', status: 400 });
+        res.status(400).send({ errors: 'Product category can not be empty' });
         return;
     }
 
     const format = /^[0-9]+.[0-9]{2}$/;
     if (!format.test(pPrice)) {
-        res.status(400).send({ errors: 'Product price is invalid', status: 400 });
+        res.status(400).send({ errors: 'Product price is invalid' });
         return;
     }
 
     if (!format.test(pWeight)) {
-        res.status(400).send({ errors: 'Product weight is invalid', status: 400 });
+        res.status(400).send({ errors: 'Product weight is invalid' });
         return;
     }
 
@@ -53,9 +53,9 @@ exports.postProductHandler = async (req, res) => {
         .then((product) => {
             console.log(product);
 
-            res.status(201).send({ response: 'Product saved to the database', status: 201 });
+            res.status(201).send({ response: 'Product saved to the database' });
         })
         .catch((err) => {
-            res.status(400).send({ errors: 'Unable to save the product' + err, status: 400 });
+            res.status(400).send({ errors: 'Unable to save the product' + err });
         });
 }

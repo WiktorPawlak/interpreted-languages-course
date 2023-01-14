@@ -9,7 +9,7 @@ exports.postCategoryHandler = async (req, res) => {
     const name = req.body['categoryName'];
 
     if (name == null || name === "") {
-        res.status(400).send({ errors: 'Category name can not be empty', status: 400 });
+        res.status(400).send({ errors: 'Category name can not be empty' });
         return;
     }
 
@@ -23,9 +23,9 @@ exports.postCategoryHandler = async (req, res) => {
         .then((category) => {
             console.log(category);
 
-            res.status(201).send({ response: 'Category saved to the database', status: 201 });
+            res.status(201).send({ response: 'Category saved to the database' });
         })
         .catch((err) => {
-            res.status(400).send({ errors: 'Unable to save the category' + err, status: 400 });
+            res.status(400).send({ errors: 'Unable to save the category' + err });
         });
 }
