@@ -3,12 +3,12 @@ const ObjectId = require('mongodb').ObjectId;
 const CategoryModel = require("../models/category");
 
 
-exports.createCategoryHandler = async (req, res) => {
+exports.postCategoryHandler = async (req, res) => {
     res.set('Content-Type', 'application/json')
 
     const name = req.body['categoryName'];
 
-    if (name === "") {
+    if (name == null || name === "") {
         res.status(400).send({ errors: 'Category name can not be empty', status: 400 });
         return;
     }

@@ -2,21 +2,33 @@ const OrderModel = require("../models/order");
 const StateModel = require("../models/state");
 
 
-exports.updateOrderStateHandler = async (req, res) => {
+exports.putOrderStateHandler = async (req, res) => {
     res.set('Content-Type', 'application/json')
 
     const id = req.params['_id'];
     const status = req.body['status'];
 
+    const idFormat = /^[0-9a-fA-F]{24}$/;
+    if (!idFormat.test(id)) {
+        res.status(400).send({ errors: 'Product id has invalid format', status: 400 });
+        return;
+    }
+    if (!id) {
+        res.status(400).send({ errors: 'Product id is required', status: 400 });
+        return;
+    }
+
     let order = await OrderModel
-    .find({ _id: id })
-    .populate('status')
-    .exec()
-    .then((orders) => {
-        
-        return orders[0];
-        
-    })
+        .findById({ _id: id })
+        .populate('status')
+        .exec()
+        .then((order) => {
+            if (order === undefined || !order) {
+                res.status(404).send({ errors: 'Order not found', status: 404 });
+                return;
+            }
+            return order;
+        })
 
     console.log(order)
 
@@ -48,10 +60,12 @@ exports.updateOrderStateHandler = async (req, res) => {
                 status: state._id
             }
         })
-        .then((product) => {
-            console.log(product);
-
-            res.status(200).send({ response: 'Order successfully updated', status: 200 });
+        .then((order) => {
+            if (!order) {
+                res.status(404).send({ errors: 'Order not found', status: 404 });
+            } else {
+                res.status(200).send({ response: 'Order successfully updated', status: 200 });
+            }
         })
         .catch((err) => {
             res.status(400).send({ errors: 'Unable to update order' + err, status: 400 });

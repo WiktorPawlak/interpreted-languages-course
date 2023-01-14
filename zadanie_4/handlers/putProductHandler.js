@@ -1,7 +1,7 @@
 const ProductModel = require("../models/product");
 
 
-exports.updateProductHandler = async (req, res) => {
+exports.putProductHandler = async (req, res) => {
     res.set('Content-Type', 'application/json')
 
     const id = req.params['_id'];
@@ -11,6 +11,11 @@ exports.updateProductHandler = async (req, res) => {
     const pPrice = req.body['price'];
     const pWeight = req.body['weight'];
 
+    const idFormat = /^[0-9a-zA-Z]{24}$/;
+    if (!idFormat.test(id)) {
+        res.status(400).send({ errors: 'Product id has invalid format', status: 400 });
+        return;
+    }
     if (!id) {
         res.status(400).send({ errors: 'Product id is required', status: 400 });
         return;

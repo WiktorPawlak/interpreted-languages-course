@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const ProductModel = require("../models/product");
 
 
-exports.createProductHandler = async (req, res) => {
+exports.postProductHandler = async (req, res) => {
     res.set('Content-Type', 'application/json')
 
     const pName = req.body['productName'];
@@ -13,12 +13,17 @@ exports.createProductHandler = async (req, res) => {
     const pPrice = req.body['price'];
     const pWeight = req.body['weight'];
 
-    if (pName === "") {
+    if (pName == null || pName === "") {
         res.status(400).send({ errors: 'Product name can not be empty', status: 400 });
         return;
     }
 
-    if (pCategory === "") {
+    if (pDescription == null || pDescription === "") {
+        res.status(400).send({ errors: 'Product description can not be empty', status: 400 });
+        return;
+    }
+
+    if (pCategory == null || pCategory === "") {
         res.status(400).send({ errors: 'Product category can not be empty', status: 400 });
         return;
     }
