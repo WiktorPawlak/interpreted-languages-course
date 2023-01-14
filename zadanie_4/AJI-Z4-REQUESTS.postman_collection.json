@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "f82d807e-341e-4002-bb88-df8dba2e078a",
+		"name": "AJI-Z4-REQUESTS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddCategory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryName\": \"General\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCategories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"test\",\r\n    \"description\": \"takl\",\r\n    \"category\": CATEGORY_ID,\r\n    \"price\": 123.33,\r\n    \"weight\": 5.32\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProducts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInNjcCI6IkFETUlOIiwicGFzIjoiYWRtaW4iLCJleHAiOjE2NzMyNDQxNDcsImlhdCI6MTY3MzIxNTM0N30.V6FHwP1VMnd7ALwPoCcHlcPK2uXAASdTW1_jDc2KWog7ho8-eQNWvrrTNlSQ_7ySkyTMZoyR0a3cd7pkXKdL5ZaOUQO9fiUgHkb3eJvhw3NWV5uGCAZ0N9IX-EXqBwnsgaWb-4qTzuKJ_qWE-6WmyJL_XctHudMFM6gEo90Zd_B09t4HeT8f65K0cw5Mlwmr3sOp0jwL1IyEFcBEHKQQ7er66PehvJt6vwVksijcWoPUqBb45l9ptos3HQM4ZFv8ScSOVJJ-O0FgR7QUhhyI2t4oTx57RIvUu_BgNPTuiz5vA_CfbVzVwKKMOIEXqsGpCF6lPhoZ7Bv837eb-Fh_ailru4EIV3cUSZc-h5ZkZYxWPr8CmrlHaw9Ftyi2zvz40IeVP0gohVnt0gDcpMN8oi3z4Wv_ESJ0-eaSHZr55jCHOyLBXn0e9IGZ5VdwmNEUrL0b7LYbe195DWk78HHnK0sCyvlYFtDMnzVWo-l5tF48dRXkRYDSBV8ljmrmQYKKsZA11I8sW3biGrakPm3bNOHlfuys73fd-nkH0-bB903hA-sq6hK4DhUr8THBGhwQAcHqqmXBI5OWx4Zbue8zAP_9_oxjSPaQfPCVwgOBNglDDJryfCJE2wl9A1xxOaAhQhHds0BTZr4M93EwBcp93EYyRpNrLLWaJ-7G1wECF_c ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userData\": {\r\n        \"username\": \"Wiktor\",\r\n        \"email\": \"tak@tak.en\",\r\n        \"phoneNumber\": \"420213769\"\r\n    },\r\n    \"products\": [\r\n        {\r\n            \"product\": \"63c2bb5e7942a61df0a6963f\",\r\n            \"quantity\": 1,\r\n            \"totalPrice\": 123.33\r\n        },\r\n        {\r\n            \"product\": \"63c2bb5e7942a61df0a6963f\",\r\n            \"quantity\": 1,\r\n            \"totalPrice\": 123.33\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrdersStates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrdersWithGivenStateId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/status/63c2bf252096786a991b013a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"status",
+						"63c2bf252096786a991b013a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateOrdersState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"CANCELLED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/63c2bf528973f3c3c12df874",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"63c2bf528973f3c3c12df874"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"tesasadsasdadst-2\",\r\n    \"description\": \"adasad\",\r\n    \"category\": \"63c2bb507942a61df0a6963e\",\r\n    \"price\": 13323.33,\r\n    \"weight\": 35.32\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/63c2bb5e7942a61df0a6963f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"63c2bb5e7942a61df0a6963f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
