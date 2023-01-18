@@ -1,0 +1,23 @@
+Node.js server application serving REST API with emphasis on validation.
+
+Endpoints:
+
+Product:
+GET app_url/products
+GET app_url/products/id
+POST app_url/products
+PUT app_url/products/id - update status
+
+Category:
+GET app_url/categories
+
+Orders:
+GET app_url/orders
+POST app_url/order
+PUT app_url/orders/id - update state
+GET app_url/orders/status/stateId
+
+Status:
+GET app_url/status
+
+.env file added for purpose.
